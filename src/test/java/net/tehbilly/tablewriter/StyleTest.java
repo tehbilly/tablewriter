@@ -28,14 +28,14 @@ class StyleTest {
         .top('e', 'f', 'g', 'h')
         .separator('i', 'j', 'k', 'l')
         .bottom('m', 'n', 'o', 'p')
-        .data('q', 'r', 's', 't')
+        .data('q', 'r', 's')
         .build();
 
     assertEquals(new Style.Row('a', 'b', 'c', 'd'), style.headSeparator);
     assertEquals(new Style.Row('e', 'f', 'g', 'h'), style.top);
     assertEquals(new Style.Row('i', 'j', 'k', 'l'), style.separator);
     assertEquals(new Style.Row('m', 'n', 'o', 'p'), style.bottom);
-    assertEquals(new Style.Row('q', 'r', 's', 't'), style.data);
+    assertEquals(new Style.Row('q', 'r', 's', ' '), style.data);
   }
 
   @Test
@@ -46,14 +46,14 @@ class StyleTest {
         .top(new Style.Row('e', 'f', 'g', 'h'))
         .separator(new Style.Row('i', 'j', 'k', 'l'))
         .bottom(new Style.Row('m', 'n', 'o', 'p'))
-        .data(new Style.Row('q', 'r', 's', 't'))
+        .data(new Style.Row('q', 'r', 's', ' '))
         .build();
 
     assertEquals(new Style.Row('a', 'b', 'c', 'd'), style.headSeparator);
     assertEquals(new Style.Row('e', 'f', 'g', 'h'), style.top);
     assertEquals(new Style.Row('i', 'j', 'k', 'l'), style.separator);
     assertEquals(new Style.Row('m', 'n', 'o', 'p'), style.bottom);
-    assertEquals(new Style.Row('q', 'r', 's', 't'), style.data);
+    assertEquals(new Style.Row('q', 'r', 's', ' '), style.data);
   }
 
   @Test
@@ -64,7 +64,7 @@ class StyleTest {
         .top('e', 'f', 'g', 'h')
         .separator('i', 'j', 'k', 'l')
         .bottom('m', 'n', 'o', 'p')
-        .data('q', 'r', 's', 't')
+        .data('q', 'r', 's')
         .build();
 
     Style rowStyle = new StyleBuilder()
@@ -72,7 +72,7 @@ class StyleTest {
         .top(new Style.Row('e', 'f', 'g', 'h'))
         .separator(new Style.Row('i', 'j', 'k', 'l'))
         .bottom(new Style.Row('m', 'n', 'o', 'p'))
-        .data(new Style.Row('q', 'r', 's', 't'))
+        .data(new Style.Row('q', 'r', 's', ' '))
         .build();
 
     assertEquals(charStyle, rowStyle);
