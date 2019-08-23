@@ -92,10 +92,37 @@ The result:
 └───────┴────────────┴────────────┘
 ```
 
+Style
+-----
+
+The way the table is drawn can be customized by specifying the `char` used for
+each segment.
+
+```java
+// Customizing the style is done using a Style instance directly or building one
+// Arguments are: left, join, right, fill
+new TableWriterBuilder<String>()
+    .style(new StyleBuilder()
+        // Included between header and data rows when header is shown
+        .headSeparator('a', 'b', 'c', 'd')
+        // The very top of the table
+        .top('e', 'f', 'g', 'h')
+        // Separator is used between data rows unless the table writer is
+        // set to 'compact'
+        .separator('i', 'j', 'k', 'l')
+        // Bottom of the table
+        .bottom('m', 'n', 'o', 'p')
+        // Each data row needs: left, join, right.
+        .data('q', 'r', 's')
+        .build())
+    // ... and so on
+    .build();
+```
+
 Roadmap
 -------
 
 - [ ] Publish to a maven repository
 - [ ] Ensure the API is usable/friendly enough
 - [ ] Flesh out and publish javadoc
-- [ ] Add `Style` and `StyleBuilder` examples
+- [x] Add `Style` and `StyleBuilder` examples

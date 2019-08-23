@@ -81,4 +81,25 @@ public class TableWriterDemo {
         // And print the result
         .printTo(System.out);
   }
+
+  private static void example3() {
+// Customizing the style is done using a Style instance directly or building one
+// Arguments are: left, join, right, fill
+new TableWriterBuilder<String>()
+    .style(new StyleBuilder()
+        // Included between header and data rows when header is shown
+        .headSeparator('a', 'b', 'c', 'd')
+        // The very top of the table
+        .top('e', 'f', 'g', 'h')
+        // Separator is used between data rows unless the table writer is
+        // set to 'compact'
+        .separator('i', 'j', 'k', 'l')
+        // Bottom of the table
+        .bottom('m', 'n', 'o', 'p')
+        // Each data row needs: left, join, right.
+        .data('q', 'r', 's')
+        .build())
+    // ... and so on
+    .build();
+  }
 }

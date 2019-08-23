@@ -11,22 +11,35 @@ public class TableWriterBuilder<T> {
   Style style = new StyleBuilder().build();
   final List<Column<T>> columns = new ArrayList<>();
 
-  public TableWriterBuilder<T> setCompact(boolean compact) {
+  /**
+   * A compact table does not include a separator between data rows.
+   */
+  public TableWriterBuilder<T> compact() {
+    this.compact = true;
+    return this;
+  }
+
+  public TableWriterBuilder<T> compact(boolean compact) {
     this.compact = compact;
     return this;
   }
 
-  public TableWriterBuilder<T> setShowHeader(boolean showHeader) {
+  public TableWriterBuilder<T> header(boolean showHeader) {
     this.showHeader = showHeader;
     return this;
   }
 
-  public TableWriterBuilder<T> setStyle(Style style) {
+  public TableWriterBuilder<T> noHeader() {
+    this.showHeader = false;
+    return this;
+  }
+
+  public TableWriterBuilder<T> style(Style style) {
     this.style = style;
     return this;
   }
 
-  public TableWriterBuilder<T> setStyle(StyleBuilder builder) {
+  public TableWriterBuilder<T> style(StyleBuilder builder) {
     this.style = builder.build();
     return this;
   }

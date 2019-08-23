@@ -52,8 +52,8 @@ public class StyleBuilder {
     return this;
   }
 
-  public StyleBuilder data(char left, char join, char right, char fill) {
-    this.data = new Style.Row(left, join, right, fill);
+  public StyleBuilder data(char left, char join, char right) {
+    this.data = new Style.Row(left, join, right, ' ');
     return this;
   }
 
