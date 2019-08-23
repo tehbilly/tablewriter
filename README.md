@@ -98,4 +98,4 @@ Roadmap
 - [ ] Publish to a maven repository
 - [ ] Ensure the API is usable/friendly enough
 - [ ] Flesh out and publish javadoc
- 
+- [ ] Add `Style` and `StyleBuilder` examples
