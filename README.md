@@ -1,7 +1,23 @@
 TableWriter
 ===========
 
+[![](https://jitpack.io/v/tehbilly/tablewriter.svg)](https://jitpack.io/#tehbilly/tablewriter)
+
 TableWriter is a JVM library for printing/building simple tables.
+
+Acquisition
+-----------
+
+Using Gradle:
+
+```gradle
+repositories {
+    maven { url "https://jitpack.io" }
+}
+dependencies {
+    compile 'com.github.tehbilly:tablewriter:v0.1.0'
+}
+```
 
 Simple Example
 --------------
