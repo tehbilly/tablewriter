@@ -6,7 +6,8 @@ plugins {
 group 'net.tehbilly'
 version '0.1.0'
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
@@ -56,4 +57,8 @@ githubRelease {
         token tokenProp
     }
     releaseAssets jar.getDestinationDirectory().asFileTree
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -62,14 +62,15 @@ class TableWriterTest {
   @Test
   @DisplayName("Simple table renders")
   void simpleTable() {
+    String lineSeparator = System.lineSeparator();
     String expected =
-        "┌────────────┬────────────┐\n"
-      + "│ foo        │ bar        │\n"
-      + "╞════════════╪════════════╡\n"
-      + "│ foo:1      │ bar:1      │\n"
-      + "├────────────┼────────────┤\n"
-      + "│ foo:2      │ bar:2      │\n"
-      + "└────────────┴────────────┘\n";
+        "┌────────────┬────────────┐" + lineSeparator
+      + "│ foo        │ bar        │" + lineSeparator
+      + "╞════════════╪════════════╡" + lineSeparator
+      + "│ foo:1      │ bar:1      │" + lineSeparator
+      + "├────────────┼────────────┤" + lineSeparator
+      + "│ foo:2      │ bar:2      │" + lineSeparator
+      + "└────────────┴────────────┘" + lineSeparator;
 
     TableWriter<String> writer = new TableWriterBuilder<String>()
         .columns("foo", "bar")
