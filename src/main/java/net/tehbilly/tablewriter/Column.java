@@ -8,7 +8,7 @@ import java.util.function.Function;
  * A column has a name, a minimum width, a maximum width, and a formatter for values added to it. The default formatter
  * is {@link String#valueOf(Object)}.
  */
-class Column<T> {
+public class Column<T> {
 
   private final String name;
   int width;

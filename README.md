@@ -135,10 +135,30 @@ new TableWriterBuilder<String>()
     .build();
 ```
 
+Kotlin
+------
+
+There is a small [Kotlin](https://kotlinlang.org) DSL included _(but not
+required)_. For more complete examples please refer to the tests.
+
+```kotlin
+val table = table<String> {
+    column("Original")
+
+    column("Reversed") {
+        width = 5
+        formatter { it.reversed() }
+    }
+
+    column("Uppercase") {
+        maxWidth = 3
+        formatter { it.toUpperCase() }
+    }
+}
+```
+
 Roadmap
 -------
 
-- [ ] Publish to a maven repository
 - [ ] Ensure the API is usable/friendly enough
 - [ ] Flesh out and publish javadoc
-- [x] Add `Style` and `StyleBuilder` examples

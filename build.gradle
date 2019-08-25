@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id "com.github.breadmoirai.github-release" version "2.2.9"
+    id "org.jetbrains.kotlin.jvm" version "1.3.50"
 }
 
 group 'net.tehbilly'
@@ -14,6 +15,9 @@ repositories {
 }
 
 dependencies {
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    testImplementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.5.1"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.5.1"
 }
@@ -61,4 +65,17 @@ githubRelease {
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+    }
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println ""
+            println "Test result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
 }
