@@ -15,7 +15,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-    compile 'net.tehbilly:tablewriter:v0.2.0'
+    compile 'net.tehbilly:tablewriter:v0.3.0'
 }
 ```
 
