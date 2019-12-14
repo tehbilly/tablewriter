@@ -9,6 +9,7 @@ public class ColumnBuilderImpl<T> implements ColumnBuilder<T> {
   int width = 10;
   int maxWidth = 50;
   Function<T, String> formatter = String::valueOf;
+  Alignment alignment = Alignment.LEFT;
 
   @Override
   public ColumnBuilderImpl<T> name(String name) {
@@ -31,6 +32,12 @@ public class ColumnBuilderImpl<T> implements ColumnBuilder<T> {
   @Override
   public ColumnBuilderImpl<T> formatter(Function<T, String> formatter) {
     this.formatter = formatter;
+    return this;
+  }
+
+  @Override
+  public ColumnBuilder<T> align(Alignment alignment) {
+    this.alignment = alignment;
     return this;
   }
 

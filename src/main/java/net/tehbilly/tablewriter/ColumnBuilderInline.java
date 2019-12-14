@@ -36,6 +36,12 @@ public class ColumnBuilderInline<T> extends ColumnBuilderImpl<T> {
     return this;
   }
 
+  @Override
+  public ColumnBuilderInline<T> align(Alignment alignment) {
+    super.align(alignment);
+    return this;
+  }
+
   /**
    * Builds this column and adds it to the calling {@code TableWriterBuilder}.
    *

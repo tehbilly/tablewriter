@@ -11,10 +11,11 @@ import java.util.function.Function;
 public class Column<T> {
 
   private final String name;
-  int width;
   private final int maxWidth;
-  List<String> data = new ArrayList<>();
+  int width;
   private final Function<T, String> formatter;
+  private final Alignment alignment;
+  List<String> data = new ArrayList<>();
 
   Column(ColumnBuilderImpl<T> builder) {
     this.name = builder.name;
@@ -23,6 +24,7 @@ public class Column<T> {
         Math.max(builder.width, name.length()),
         builder.maxWidth
     );
+    this.alignment = builder.alignment;
     this.maxWidth = builder.maxWidth;
     this.formatter = builder.formatter;
   }
@@ -64,7 +66,31 @@ public class Column<T> {
    * Gets the value for row {@literal i}, padding if necessary.
    */
   String get(int i) {
-    return String.format("%-" + width + "s", data.get(i));
+    switch (alignment) {
+      case LEFT:
+        return String.format("%-" + width + "s", data.get(i));
+      case RIGHT:
+        return String.format("%" + width + "s", data.get(i));
+      case CENTER:
+        String value = data.get(i);
+        // if width and value length aren't the same (odd/even) prepend a space to value
+        if (width % 2 != value.length() % 2) {
+          value = ' ' + value;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < (width - value.length()) / 2; j++) {
+          sb.append(' ');
+        }
+        sb.append(value);
+        for (int j = 0; j < (width - value.length()) / 2; j++) {
+          sb.append(' ');
+        }
+
+        return sb.toString();
+      default:
+        throw new IllegalStateException("Unknown alignment: " + alignment);
+    }
   }
 
   public int getMaxWidth() {

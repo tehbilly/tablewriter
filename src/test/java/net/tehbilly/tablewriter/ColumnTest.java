@@ -30,6 +30,56 @@ class ColumnTest {
   }
 
   @Test
+  @DisplayName("Alignment: RIGHT")
+  void alignRight() {
+    Column<String> col = Column.<String>builder()
+        .name("name")
+        .width(10)
+        .maxWidth(10)
+        .formatter(String::toUpperCase)
+        .align(Alignment.RIGHT)
+        .build();
+
+    col.add("foo");
+    assertEquals("       FOO", col.get(0));
+  }
+
+  @Test
+  @DisplayName("Alignment: CENTER (odd)")
+  void alignCenterOdd() {
+    Column<String> col = Column.<String>builder()
+        .name("name")
+        .width(9)
+        .maxWidth(9)
+        .formatter(String::toUpperCase)
+        .align(Alignment.CENTER)
+        .build();
+
+    col.add("foo");
+    col.add("four");
+    assertEquals("   FOO   ", col.get(0));
+    assertEquals("   FOUR  ", col.get(1));
+  }
+
+  @Test
+  @DisplayName("Alignment: CENTER (even)")
+  void alignCenterEven() {
+    Column<String> col = Column.<String>builder()
+        .name("name")
+        .width(10)
+        .maxWidth(10)
+        .formatter(String::toUpperCase)
+        .align(Alignment.CENTER)
+        .build();
+
+    col.add("foo");
+    col.add("four");
+
+    assertEquals("    FOO   ", col.get(0));
+    assertEquals("   FOUR   ", col.get(1));
+  }
+
+  @Test
   @DisplayName("Column with long name")
   void longName() {
     Column<String> col = Column.<String>builder("longlongname")

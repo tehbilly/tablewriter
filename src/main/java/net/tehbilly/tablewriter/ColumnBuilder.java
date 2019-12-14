@@ -41,6 +41,13 @@ public interface ColumnBuilder<T> {
   ColumnBuilder<T> formatter(Function<T, String> formatter);
 
   /**
+   * Align {@code String} from {@link #formatter(Function)} when printing the cell.
+   *
+   * @return this {@code ColumnBuilder} instance (for chaining)
+   */
+  ColumnBuilder<T> align(Alignment alignment);
+
+  /**
    * Create a new {@code Column} instance.
    *
    * @return the created {@code Column}

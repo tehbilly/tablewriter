@@ -37,6 +37,7 @@ class ColumnDSL<T>(name: String) {
     private val builder: ColumnBuilder<T> = ColumnBuilderImpl<T>().name(name)
     var width: Int = 10
     var maxWidth: Int = 50
+    var align: Alignment = Alignment.LEFT
 
     fun formatter(formatter: (T) -> String) {
         builder.formatter(formatter)
@@ -45,5 +46,6 @@ class ColumnDSL<T>(name: String) {
     fun build(): Column<T> = builder
         .width(width)
         .maxWidth(maxWidth)
+        .align(align)
         .build()
 }
